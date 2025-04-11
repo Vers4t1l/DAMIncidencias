@@ -1,0 +1,274 @@
+/* --- Import Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* --- Base & Variables --- */
+:root {
+    /* Adjust Bootstrap dark theme variables */
+    --bs-body-color: #adb5bd;            /* Lighter gray text */
+    --bs-body-bg: #1a1d24;               /* Very dark background */
+    --bs-border-color: #343a40;          /* Darker border */
+    --bs-emphasis-color: #f8f9fa;        /* Near white for emphasis */
+    --bs-secondary-bg: #2c303a;          /* Slightly lighter dark for card headers? */
+    --bs-tertiary-bg: #21252f;           /* Darker elements background */
+    --bs-primary: #0d6efd;               /* Keep default bright blue */
+    --bs-primary-rgb: 13, 110, 253;      /* Ensure RGB is set for opacity */
+    --bs-danger: #dc3545;                /* Keep default red */
+    --bs-warning: #ffc107;               /* Keep default yellow */
+    --bs-link-color: var(--bs-primary);
+    --bs-link-hover-color: #408cfd;
+
+    /* Custom variables */
+    --app-card-bg: #252932;              /* Card background color */
+    --app-card-header-bg: #2c303a;        /* Card header background */
+    --app-input-bg: #2c303a;             /* Input background */
+    --app-input-border: #40454c;          /* Input border */
+    --app-input-placeholder: #6c757d;    /* Placeholder text */
+    --app-card-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+}
+
+/* Apply dark theme explicitly if needed, or rely on data-bs-theme="dark" */
+[data-bs-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* --- Global Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; /* Slightly smaller base font size */
+}
+
+/* Global Header */
+.app-header {
+    /* background-color: var(--bs-tertiary-bg); Now using bg-body-tertiary */
+}
+.app-header h1 {
+    color: var(--bs-emphasis-color);
+}
+.app-header .badge {
+    font-size: 0.8em;
+}
+
+
+/* --- Card Styles --- */
+.app-card {
+    background-color: var(--app-card-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.5rem; /* Standard Bootstrap rounding */
+    /* box-shadow: var(--app-card-shadow); Now using Bootstrap shadow-sm */
+}
+.app-card .card-header {
+    background-color: var(--app-card-header-bg);
+    border-bottom: 1px solid var(--bs-border-color);
+    color: var(--bs-emphasis-color);
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+}
+.app-card .card-header i {
+    color: var(--bs-primary); /* Blue icon in header */
+}
+.app-card .card-body {
+    padding: 1.5rem;
+}
+
+/* --- Form Styles --- */
+.form-label-sm { /* Custom class for smaller labels */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #8a919c; /* Lighter label color */
+    margin-bottom: 0.3rem;
+}
+
+.form-control, .form-select {
+    background-color: var(--app-input-bg);
+    border: 1px solid var(--app-input-border);
+    color: var(--bs-body-color); /* Form text color */
+    border-radius: 0.3rem; /* Slightly less round */
+}
+.form-control:focus, .form-select:focus {
+    background-color: var(--app-input-bg);
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+    color: var(--bs-body-color);
+}
+.form-control::placeholder {
+    color: var(--app-input-placeholder);
+}
+.form-control:disabled, .form-control[readonly] {
+  background-color: #3a3f46; /* Darker disabled background */
+  opacity: 0.7;
+}
+
+/* Smaller form controls used in example */
+.form-control-sm, .form-select-sm {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    min-height: calc(1.5em + 0.8rem + 2px); /* Adjust height */
+}
+textarea.form-control-sm {
+     min-height: calc(4 * (1.5em + 0.8rem + 2px)); /* Adjust textarea height if needed */
+}
+
+
+/* --- Priority Button Group --- */
+#prioridadGroup label.btn { /* Style all buttons in the group */
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+#prioridadGroup label.btn i {
+    font-size: 1em; /* Ensure icons size correctly */
+    vertical-align: -0.1em;
+    margin-right: 0.3em;
+}
+
+/* Use btn-check input state to style the LABEL buttons */
+#prioridadGroup .btn-check:checked + .btn {
+   /* Already handled by Bootstrap: sets active state colors */
+   /* Ensure specific text colors for better contrast on some backgrounds */
+   font-weight: 600;
+}
+#prioridadGroup .btn-check:checked + .btn-outline-warning {
+    color: #333; /* Darker text on yellow */
+}
+#prioridadGroup .btn-check:checked + .btn-outline-primary {
+    color: #fff;
+}
+#prioridadGroup .btn-check:checked + .btn-outline-danger {
+    color: #fff;
+}
+#prioridadGroup .btn-check:checked + .btn-outline-secondary {
+    color: #fff;
+}
+
+/* Ensure error message shows */
+#prioridadGroup ~ #prioridad-error:has(+ .invalid-feedback:not(:empty)) {
+    display: block !important; /* Show our custom error if the hidden input fails validation */
+}
+form.was-validated #prioridadGroup:invalid ~ .invalid-feedback,
+#prioridadGroup:has(.is-invalid) ~ .invalid-feedback {
+    display: block;
+}
+
+
+/* --- Form/Panel Feedback Alert Styles --- */
+#formFeedback .alert, #panelFeedbackContainer .alert {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0; /* Remove default margin if placed directly below something */
+}
+
+
+/* --- List Panel Styles --- */
+/* Filter Bar */
+.filter-bar .form-select,
+.filter-bar .form-control {
+    background-color: var(--bs-tertiary-bg); /* Slightly different bg for filters */
+}
+.filter-bar .input-group-text {
+     background-color: var(--bs-tertiary-bg);
+     border-color: var(--app-input-border);
+}
+
+/* Incident List Container */
+.incident-list-container {
+    /* max-height: calc(100vh - 280px); Adjust based on header/footer/padding */
+    /* Allow scrolling if content exceeds container height */
+}
+
+/* Incident Card Specifics (using class from JS) */
+.card-incidencia {
+    border: 1px solid var(--bs-border-color);
+    margin-bottom: 0.75rem;
+    border-radius: 0.4rem;
+    background-color: var(--bs-tertiary-bg); /* Different bg for incident cards */
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    font-size: 0.85rem; /* Smaller font inside incident cards */
+}
+.card-incidencia:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+     border-color: var(--bs-primary);
+}
+
+.card-incidencia .card-header {
+    background-color: rgba(0,0,0,0.1); /* Transparent dark */
+    padding: 0.6rem 1rem;
+    border-bottom-color: var(--bs-border-color);
+}
+.card-incidencia .card-header .card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--bs-emphasis-color);
+}
+.card-incidencia .card-header .badge {
+    font-size: 0.7rem;
+}
+
+.card-incidencia .card-body {
+    padding: 1rem;
+    line-height: 1.5;
+}
+
+.card-incidencia .card-text.incidencia-meta {
+    font-size: 0.8em;
+    color: #8a919c;
+    margin-top: 0.75rem;
+    border-top: 1px dashed var(--bs-border-color);
+    padding-top: 0.75rem;
+}
+.card-incidencia .card-text.incidencia-meta strong {
+    color: var(--bs-body-color);
+}
+.card-incidencia .action-buttons {
+     margin-top: 0.75rem;
+}
+.card-incidencia .action-buttons .btn {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+}
+
+
+/* State-specific styles for Incident Cards */
+.card-incidencia.estado-cerrada {
+    opacity: 0.65;
+}
+.card-incidencia.estado-cerrada:hover {
+     opacity: 0.8;
+}
+.card-incidencia.estado-cerrada .card-header .card-title {
+     text-decoration: line-through;
+}
+
+/* Priority specific badge colors (Bootstrap classes like text-bg-danger handle this well) */
+
+
+/* --- Utility/Overrides --- */
+.overflow-auto {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--bs-secondary-bg) var(--app-card-bg); /* Firefox */
+}
+
+.overflow-auto::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height for horizontal scrollbar */
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background: var(--app-card-bg); /* Track background */
+  border-radius: 4px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background-color: var(--bs-secondary-bg); /* Thumb color */
+  border-radius: 4px;
+  border: 2px solid var(--app-card-bg); /* Creates padding around thumb */
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background-color: #495057; /* Slightly lighter thumb on hover */
+}
+
+/* Ensure proper color for counter badge */
+#contadorIncidencias {
+     font-size: 0.75rem;
+}
