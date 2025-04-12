@@ -5,15 +5,15 @@
 // REMOVED: const INCIDENCIAS_STORAGE_KEY = 'incidencias_v2';
 const priorityOrderMap = { critica: 4, alta: 3, media: 2, baja: 1 };
 
-// Firebase Configuration (Pasted from user input) // Put your thinks to work
+// Firebase Configuration (Pasted from user input)
 const firebaseConfig = {
-  apiKey: "", // Replace with your actual API key if different
-  authDomain: "",
-  projectId: "",
-  storageBucket: "", // Ensure this matches your console
-  messagingSenderId: "",
-  appId: "4",
-  measurementId: "" // Optional
+  apiKey: "AIzaSyA2CntUQNPEyM_AI7ysjdM7qE3V0tSRN5k", // Replace with your actual API key if different
+  authDomain: "damincidencias.firebaseapp.com",
+  projectId: "damincidencias",
+  storageBucket: "damincidencias.appspot.com", // Ensure this matches your console
+  messagingSenderId: "1086792901405",
+  appId: "1:1086792901405:web:680324e456a17e776577f4",
+  measurementId: "G-MH1JQ9WL4Y" // Optional
 };
 
 // Initialize Firebase
